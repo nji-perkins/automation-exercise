@@ -15,3 +15,19 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+// PRESENTATION MODE: Slow down execution speed
+const PRESENTATION_DELAY = 1500; // Delay in milliseconds (1500ms = 1.5 seconds)
+
+// List of commands to slow down
+const commandsToSlow = ['visit', 'click', 'type', 'select', 'check', 'uncheck'];
+
+commandsToSlow.forEach((command) => {
+  Cypress.Commands.overwrite(command, (originalFn, ...args) => {
+    const result = originalFn(...args);
+    return new Cypress.Promise((resolve) => {
+      setTimeout(() => {
+        resolve(result);
+      }, PRESENTATION_DELAY);
+    });
+  });
+});
