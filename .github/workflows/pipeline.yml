@@ -27,4 +27,4 @@ jobs:
         run: npm ci
 
       - name: Run Cypress Tests
-        run: npx cypress start
+        run: npx cypress run
