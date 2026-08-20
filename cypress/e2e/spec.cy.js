@@ -4,12 +4,11 @@ describe('Web Application Tests', () => {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-')
     //register a new user account
     cy.visit('https://automationexercise.com/ ');
-    cyscreenshot(`${timestamp}_00_homepage`);
+    cy.screenshot(`${timestamp}_00_homepage`);
     cy.title().should('eq', 'Automation Exercise');
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
     cy.get('[data-qa="signup-name"]').type('John Doe', { delay: 100 });
-    cy.get('[data-qa="signup-email"]').type('johndoe7026@example.com', { delay: 100 });
-    cy.screenshot(`${timestamp}_01_signup_form`);
+    cy.get('[data-qa="signup-email"]').type('johndoe7029@example.com', { delay: 100 });
     cy.get('[data-qa="signup-button"]').click();
     cy.get('#id_gender1').check('Mr');
     cy.get('[data-qa="password"]').type('123456789', { delay: 100 });
@@ -29,16 +28,13 @@ describe('Web Application Tests', () => {
     cy.get('[data-qa="zipcode"]').type('M5H 2N2', { delay: 100 });
     cy.get('[data-qa="mobile_number"]').type('+1 416-123-4567', { delay: 100 });
     cy.get('[data-qa="create-account"]').click();
-    cy.screenshot(`${timestamp}_03_account_created`);
     cy.get('.title > b').should('have.text', 'Account Created!');
     cy.get('[data-qa="continue-button"]').click();
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
     //login with the newly created account
-    cy.get('[data-qa="login-email"]').type('johndoe7026@example.com', { delay: 100 });
+    cy.get('[data-qa="login-email"]').type('johndoe7029@example.com', { delay: 100 });
     cy.get('[data-qa="login-password"]').type('123456789', { delay: 100 });
-    cy.screenshot(`${timestamp}_04_login_form`);
     cy.get('[data-qa="login-button"]').click();
-    cy.screenshot(`${timestamp}_05_logged_in`);
     cy.get('.shop-menu > .nav > :nth-child(10) > a').should('contain.text', 'Logged in as John Doe');
     cy.scrollTo('bottom');
     cy.wait(1000);
@@ -46,20 +42,17 @@ describe('Web Application Tests', () => {
     cy.contains('h2', 'Features Items').scrollIntoView();
     // Add a product to the cart
     cy.get('a[href="/product_details/1"]').click();
-    cy.screenshot(`${timestamp}_06_product_details`);
     cy.scrollTo('bottom');
     cy.wait(1000);
     cy.scrollTo('top');
     cy.get('#quantity').clear().type('5');
     cy.contains('button', 'Add to cart').click();
-    cy.screenshot(`${timestamp}_07_added_to_cart`);
     cy.get('.modal-content').should('be.visible');
     // Verify that the product has been added to the cart
     cy.get('.modal-content').contains('Your product has been added to car').should('be.visible');
     cy.get('.modal-content').contains('Continue Shopping').click();
     cy.contains('button', 'Add to cart').click({ force: true });
     cy.get('.modal-content a[href="/view_cart"]').click();
-    cy.screenshot(`${timestamp}_08_cart_page`);
     cy.get('.cart_info').contains('Blue Top').should('be.visible');
     cy.get('.cart_info').contains('Rs. 500').should('be.visible');
     cy.get('.cart_info').contains('5').should('be.visible');
@@ -106,7 +99,7 @@ describe('Web Application Tests', () => {
 
     // Verify that the user can log out and log back in successfully
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
-    cy.get('[data-qa="login-email"]').type('johndoe7026@example.com');
+    cy.get('[data-qa="login-email"]').type('johndoe7029@example.com');
     cy.get('[data-qa="login-password"]').type('123456789');
     cy.get('[data-qa="login-button"]').click();
   })
