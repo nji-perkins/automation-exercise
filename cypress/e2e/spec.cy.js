@@ -7,7 +7,7 @@ describe('Web Application Tests', () => {
     cy.title().should('eq', 'Automation Exercise');
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
     cy.get('[data-qa="signup-name"]').type('John Doe', { delay: 100 });
-    cy.get('[data-qa="signup-email"]').type('johndoe7029@example.com', { delay: 100 });
+    cy.get('[data-qa="signup-email"]').type('johndoe7030@example.com', { delay: 100 });
     cy.get('[data-qa="signup-button"]').click();
     cy.get('#id_gender1').check('Mr');
     cy.get('[data-qa="password"]').type('123456789', { delay: 100 });
@@ -31,7 +31,7 @@ describe('Web Application Tests', () => {
     cy.get('[data-qa="continue-button"]').click();
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
     //login with the newly created account
-    cy.get('[data-qa="login-email"]').type('johndoe7029@example.com', { delay: 100 });
+    cy.get('[data-qa="login-email"]').type('johndoe7030@example.com', { delay: 100 });
     cy.get('[data-qa="login-password"]').type('123456789', { delay: 100 });
     cy.get('[data-qa="login-button"]').click();
     cy.get('.shop-menu > .nav > :nth-child(10) > a').should('contain.text', 'Logged in as John Doe');
@@ -98,7 +98,7 @@ describe('Web Application Tests', () => {
 
     // Verify that the user can log out and log back in successfully
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
-    cy.get('[data-qa="login-email"]').type('johndoe7029@example.com');
+    cy.get('[data-qa="login-email"]').type('johndoe7030@example.com');
     cy.get('[data-qa="login-password"]').type('123456789');
     cy.get('[data-qa="login-button"]').click();
   })
