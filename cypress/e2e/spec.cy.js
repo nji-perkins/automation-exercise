@@ -4,7 +4,6 @@ describe('Web Application Tests', () => {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-')
     //register a new user account
     cy.visit('https://automationexercise.com/ ');
-    cy.screenshot(`${timestamp}_00_homepage`);
     cy.title().should('eq', 'Automation Exercise');
     cy.get('.shop-menu > .nav > :nth-child(4) > a').click();
     cy.get('[data-qa="signup-name"]').type('John Doe', { delay: 100 });
